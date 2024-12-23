@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(26, 10, 100, 0.8);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar with Right-aligned Button */
+        .navdiv {
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+            gap: 20px; /* Space between text and button */
+            padding: 10px 20px;
+        }
+
+        /* Text before the Button */
+        .navdiv .text {
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Button Styling */
+        .navdiv button {
+            background-color: hsla(240, 100%, 100%, 0.918);
+            color: rgba(26, 10, 100, 0.8);
+            border: black;
+            padding: 1rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .navdiv button a {
+            text-decoration: none;
+            color: rgba(26, 10, 100, 0.8);
+            font-weight: bold;
+        }
+
+        .navdiv button:hover {
+            background-color: #616163;
+        }
+
+        /* Container for Dashboard */
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(235, 235, 238, 0.671);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Heading Styling */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: rgba(26, 10, 100, 0.8);
+            border-radius: 8px;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Card Title */
+        .card h3 {
+            color: #fff;
+        }
+
+        /* Card Paragraphs */
+        .card p {
+            color: rgba(235, 235, 238, 0.671);
+        }
+
+        /* Price Styling */
+        .card .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* Quantity Styling */
+        .card .quantity {
+            color: #FF5722;
+        }
+
+        /* Add Product Button Styling */
+        .add-product-btn {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-product-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation with Text and Button -->
+    <nav class="navbar ">
+        <div class="navdiv">
+            <div class="text">Want to add a new product?</div> <!-- Text before button -->
+            <button><a href="/addproductpage">+ Add Product</a></button>
+        </div>  
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="container">
+        <h1>Products Dashboard</h1>
+
+        <!-- Dashboard Flex Grid for Cards -->
+        <div class="dashboard">
+            {% for product in products %}
+                <div class="card">
+                    <h3>{{ product['product_name'] }}</h3>
+                    <p>Category: {{ product['category'] }}</p>
+                    <p class="price">Price: ₹{{ product['price'] }}</p>
+                    <p class="quantity">Quantity: {{ product['quantity'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
